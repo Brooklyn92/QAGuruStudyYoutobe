@@ -6,12 +6,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class FirstTest {
     @Test
-    public void firstTest() throws InterruptedException {
+    public void firstTest() {
         System.setProperty("webdriver.chrome.driver", "C:\\webdrivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.tvnet.lv/");
-        WebElement accCookie = driver.findElement(By.xpath("//button[@mode='primary']"));
-        accCookie.click();
+        WebElement acceptCookie = driver.findElement(By.xpath("//button[@mode='primary']"));
+        acceptCookie.click();
     }
 }
