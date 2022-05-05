@@ -1,10 +1,16 @@
-package pageObject.pages;
+package pageObject;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class BaseFunc {
+
     public WebDriver browser;
 
     public BaseFunc() {
@@ -19,5 +25,9 @@ public class BaseFunc {
             url = "https://" + url;
         }
         browser.get(url);
+    }
+    public void click(By locator) { //  в параметр метода передаётся тип данных локатора
+        WebDriverWait wait = new WebDriverWait(browser, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 }
