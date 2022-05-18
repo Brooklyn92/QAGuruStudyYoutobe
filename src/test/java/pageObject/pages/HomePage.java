@@ -8,6 +8,7 @@ import pageObject.model.Article;
 import java.util.List;
 
 public class HomePage {
+
     private final By ACCEPT_COOKIES = By.xpath("//button[@mode='primary']");
     private final By COMMENT_COUNT = By.xpath(".//span[contains(@class, 'article__comment')]");
     private final By ARTICLE = By.tagName("article");
@@ -31,14 +32,11 @@ public class HomePage {
     private Article mapArticle(WebElement we) {
         Article article = new Article();
 
-        // if there is no element with comments count -> commentsCount = 0
-        // else we are getting webElement with comments count, parse  to int and store it
-
         if (baseFunc.findElements(we,COMMENT_COUNT).isEmpty()) {
-            article.setCommentCount(0);
+            article.setCommentCount(0); // if there is no element with comments count -> commentsCount = 0
         }
         else {
-            baseFunc.findElements(we, COMMENT_COUNT).get(0).getText();
+            baseFunc.findElements(we, COMMENT_COUNT).get(0).getText(); // else we are getting webElement with comments count, parse  to int and store it
         }
 
         article.setCommentCount();
