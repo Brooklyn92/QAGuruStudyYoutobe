@@ -1,6 +1,7 @@
 package pageObject.tests;
 import org.junit.jupiter.api.Test;
 import pageObject.BaseFunc;
+import pageObject.model.Article;
 import pageObject.pages.HomePage;
 
 public class ArticleTests {
@@ -21,7 +22,8 @@ public class ArticleTests {
 
 
         //Get 3rd article
-        homePage.getArticleById(3);
+        Article article = homePage.getArticleById(16);
+        System.out.println(article.getCommentCount());
 
         //Open 3rd article
 

@@ -41,8 +41,4 @@ public class BaseFunc {
     public List<WebElement> findElements(WebElement parent, By child) {
         return parent.findElements(child);
     }
-
-    public String getText(WebElement parent, By child) {
-
-    }
 }

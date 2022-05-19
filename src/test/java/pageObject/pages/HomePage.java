@@ -26,21 +26,23 @@ public class HomePage {
         List<WebElement> articlesElements= baseFunc.findElements(ARTICLE); // формируется список статей на главной странице
         Assertions.assertFalse(articlesElements.isEmpty(), "There are no articles"); //проверка на содержании статьи на странице
         WebElement currentArticle = articlesElements.get(articleNumber - 1); // посколько мы считаем с 1, а индексы с 0, то делаем articleNumber - 1
-        mapArticle(currentArticle);
+        return mapArticle(currentArticle);
     }
 
     private Article mapArticle(WebElement we) {
         Article article = new Article();
 
-        if (baseFunc.findElements(we,COMMENT_COUNT).isEmpty()) {
+        List<WebElement> counters = baseFunc.findElements(we, COMMENT_COUNT);
+        Assertions.assertTrue(counters.size() <=1, "There is more than 1 counter!");
+
+
+        if (counters.isEmpty()) {
             article.setCommentCount(0); // if there is no element with comments count -> commentsCount = 0
         }
         else {
-            baseFunc.findElements(we, COMMENT_COUNT).get(0).getText(); // else we are getting webElement with comments count, parse  to int and store it
+            //WebElement counter = counters.get(0);// else we are getting webElement with comments count, parse  to int and store it  -> (36) :: WebElement
+            article.setCommentCount(counters.get(0));
         }
-
-        article.setCommentCount();
-        article.setTitle();
         return article;
 
     }
